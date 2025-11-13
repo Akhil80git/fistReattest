@@ -1,0 +1,14 @@
+.about-container {
+  padding: 40px;
+  background-color: #f4f4f4;
+  height: 100vh;
+  text-align: center;
+}
+
+.about-container h1 {
+  color: #222;
+}
+
+.about-container p {
+  color: #555;
+}

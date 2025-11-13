@@ -1,0 +1,31 @@
+.home-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Fixed vertical sidebar — only in Home */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100vh;
+  background-color: #222;
+  border-right: 2px solid #444;
+}
+
+/* Content moves to the right of sidebar */
+.content {
+  margin-left: 100px; /* same as sidebar width */
+  padding: 40px;
+  flex: 1;
+}
+
+.content h1 {
+  color: #222;
+}
+
+.content p {
+  color: #555;
+}

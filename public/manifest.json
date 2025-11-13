@@ -1,0 +1,21 @@
+{
+  "name": "Karzone",
+  "short_name": "Karzone",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2A3443",
+  "theme_color": "#2A3443",
+  "description": "Car selling webapp",
+  "icons": [
+    {
+      "src": "/192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
