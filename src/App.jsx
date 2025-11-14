@@ -1,21 +1,19 @@
 import React from "react";
 import Nav from "./co/Nav";
+
 import usePwa from "./pwa/usePwa";
-import "./app.css"; // Make sure to import app-wide styles
+
 
 export default function App() {
-  const handleInstallApp = usePwa(); // PWA install handler
+
+  const handleInstallApp = usePwa();  // <-- यह जरूरी है
 
   return (
     <div>
       <Nav installApp={handleInstallApp} />
-
-      <main style={{ padding: "20px" }}>
-        <h2>Welcome to Warzone App</h2>
-      </main>
-
-      <footer style={{ textAlign: "center", padding: "10px", marginTop: "20px" }}>
-        © 2095 Warzone
+      <main></main>
+      <footer style={{ textAlign: "center", padding: "10px" }}>
+        © 2025 Warzone
       </footer>
     </div>
   );
