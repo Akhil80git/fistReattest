@@ -1,27 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Nav from './co/Nav';
-import FooterNav from './co/FooterNav';
 
 export default function App() {
-  const [route, setRoute] = useState('/home');
+  const [route, setRoute] = useState('/profile');
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+    const handler = (e) => { e.preventDefault(); setDeferredPrompt(e); };
+    window.addEventListener('beforeinstallprompt', handler);
+    return () => window.removeEventListener('beforeinstallprompt', handler);
+  }, []);
 
   function handleNavigate(path) {
     setRoute(path);
   }
 
-  function handleDownload() {
-    alert("Download action chala! Yahan aap APK ya file ka link laga sakte hain.");
+  function handleInstallApp() {
+    if (!deferredPrompt) {
+      alert('Install prompt not available! Make sure your PWA setup is correct.');
+      return;
+    }
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => setDeferredPrompt(null));
   }
 
   return (
     <div>
-      <Nav onNavigate={handleNavigate} />
-      <main style={{minHeight:'75vh', padding:'1rem'}}>
-        <h2>Current Route: {route}</h2>
-        {/* Apni route ke hisaab se UI dikha sakte hain */}
+      <Nav onNavigate={handleNavigate} installApp={handleInstallApp} />
+      <main>
+        <h2>Current: {route === '/profile' ? 'Profile Page' : 'Settings Page'}</h2>
       </main>
-      <FooterNav onNavigate={handleNavigate} onDownload={handleDownload} />
     </div>
   );
 }

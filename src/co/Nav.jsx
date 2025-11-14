@@ -1,13 +1,18 @@
 import React from 'react';
 import './Nav.css';
 
-export default function Nav({ onNavigate }) {
+export default function Nav({ onNavigate, installApp }) {
   return (
-    <nav className="nav">
-      <a onClick={() => onNavigate('/home')}><i className="fas fa-home"></i> Home</a>
-      <a onClick={() => onNavigate('/search')}><i className="fas fa-search"></i> Search</a>
-      <a onClick={() => onNavigate('/notifications')}><i className="fas fa-bell"></i> Notifications</a>
-      <a onClick={() => onNavigate('/profile')}><i className="fas fa-user"></i> Profile</a>
+    <nav className="nav custom-topnav">
+      <button className="icon-btn" onClick={() => onNavigate('/profile')} aria-label="Profile">
+        <i className="fas fa-user-circle"></i>
+      </button>
+      <button className="icon-btn" onClick={() => onNavigate('/settings')} aria-label="Settings">
+        <i className="fas fa-cog"></i>
+      </button>
+      <button className="install-box-btn" onClick={installApp}>
+        Install App
+      </button>
     </nav>
   );
 }
