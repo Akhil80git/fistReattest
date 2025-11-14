@@ -5,10 +5,8 @@ import Home from './co/pages/Home';
 import About from './co/pages/About';
 
 export default function App() {
-  // SPA Routing
   const [route, setRoute] = useState(window.location.pathname);
   const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [installBtnVisible, setInstallBtnVisible] = useState(false);
 
   useEffect(() => {
     // SPA route listener
@@ -24,21 +22,12 @@ export default function App() {
     const beforeInstallPromptHandler = (e) => {
       e.preventDefault();
       setDeferredPrompt(e);
-      setInstallBtnVisible(true);
     };
     window.addEventListener('beforeinstallprompt', beforeInstallPromptHandler);
-
-    // App installed handler
-    const appInstalledHandler = () => {
-      setInstallBtnVisible(false);
-      setDeferredPrompt(null);
-    };
-    window.addEventListener('appinstalled', appInstalledHandler);
 
     return () => {
       window.removeEventListener('popstate', handleRoute);
       window.removeEventListener('beforeinstallprompt', beforeInstallPromptHandler);
-      window.removeEventListener('appinstalled', appInstalledHandler);
     };
   }, []);
 
@@ -52,11 +41,13 @@ export default function App() {
 
   // PWA install
   function handleInstallApp() {
-    if (!deferredPrompt) return;
+    if (!deferredPrompt) {
+      alert('Install prompt not available! Make sure your browser and PWA setup is correct.');
+      return;
+    }
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then(() => {
       setDeferredPrompt(null);
-      setInstallBtnVisible(false);
     });
   }
 
@@ -65,7 +56,6 @@ export default function App() {
       <Nav
         route={route}
         onNavigate={handleNavigate}
-        installBtnVisible={installBtnVisible}
         installApp={handleInstallApp}
       />
       <main>

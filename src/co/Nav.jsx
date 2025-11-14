@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import './Nav.css';
 
-export default function Nav({ route, onNavigate, installBtnVisible, installApp }) {
+export default function Nav({ route, onNavigate, installApp }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Mobile: close menu after click
   function handleClick(path) {
     onNavigate(path);
     setMenuOpen(false);
@@ -34,11 +33,9 @@ export default function Nav({ route, onNavigate, installBtnVisible, installApp }
         >
           About
         </a>
-        {installBtnVisible && (
-          <button className="install-btn-nav" onClick={installApp}>
-            Install App
-          </button>
-        )}
+        <button className="install-btn-nav" onClick={installApp}>
+          Install App
+        </button>
       </div>
     </nav>
   );
