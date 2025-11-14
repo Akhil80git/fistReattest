@@ -1,57 +1,30 @@
-import React from 'react';
+import React from "react";
+import "./nav.css";
 
-export default function Nav({ installApp, onLocationClick, onSearchClick }) {
+const Nav = ({ installApp }) => {
   return (
-    <nav style={{
-      padding: '5px 10px',
-      backgroundColor: '#2a3443',
-      color: 'white',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      fontSize: '14px',
-      width: '100%',
-      boxSizing: 'border-box',
-    }}>
-      <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-        {/* Location icon button */}
-        <button onClick={onLocationClick} style={iconButtonStyle} aria-label="Location">
-          📍
-        </button>
+    <div className="top-nav">
 
-        {/* Search icon button */}
-        <button onClick={onSearchClick} style={iconButtonStyle} aria-label="Search">
-          🔍
-        </button>
+      <div className="left-box">
+        <div className="location-box">
+          <i className="fa-solid fa-location-dot"></i>
+          <span>Bhopal</span>
+        </div>
+
+        <div className="search-box">
+          <i className="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search for items..." />
+        </div>
       </div>
 
-      {/* Install app button smaller */}
-      <button
-        onClick={installApp}
-        style={{
-          padding: '6px 12px',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          backgroundColor: '#4CAF50',
-          color: 'white',
-          border: 'none',
-          fontSize: '13px',
-          minWidth: '80px',
-        }}
-      >
-        Install App
-      </button>
-    </nav>
-  );
-}
+      <div className="right-box">
+        <div className="install-btn" onClick={installApp}>
+          Install
+        </div>
+      </div>
 
-const iconButtonStyle = {
-  backgroundColor: 'transparent',
-  border: 'none',
-  color: 'white',
-  cursor: 'pointer',
-  fontSize: '18px',
-  padding: '0',
-  display: 'flex',
-  alignItems: 'center',
+    </div>
+  );
 };
+
+export default Nav;
