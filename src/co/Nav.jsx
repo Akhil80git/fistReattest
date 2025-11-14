@@ -11,7 +11,7 @@ export default function Nav({ onNavigate, installApp }) {
         <i className="fas fa-cog"></i>
       </button>
       <button className="install-box-btn" onClick={installApp}>
-        Install App
+        Installx App
       </button>
     </nav>
   );
