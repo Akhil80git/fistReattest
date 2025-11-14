@@ -1,9 +1,10 @@
 import React from "react";
 import Nav from "./co/Nav";
 import usePwa from "./pwa/usePwa";
+import "./app.css"; // Make sure to import app-wide styles
 
 export default function App() {
-  const handleInstallApp = usePwa(); // <-- PWA install handler
+  const handleInstallApp = usePwa(); // PWA install handler
 
   return (
     <div>
