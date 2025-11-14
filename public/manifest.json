@@ -1,19 +1,14 @@
 {
-  "name": "Karzone",
-  "short_name": "Karzone",
-  "start_url": "/",
+  "name": "Warzone",
+  "short_name": "Warzone",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#2A3443",
-  "theme_color": "#2A3443",
   "description": "Car selling webapp",
+  "theme_color": "#2A3443",
   "icons": [
     {
-      "src": "/192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/512x512.png",
+      "src": "/car0.png",
       "sizes": "512x512",
       "type": "image/png"
     }
