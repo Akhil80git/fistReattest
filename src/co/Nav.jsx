@@ -1,10 +1,9 @@
 import React from "react";
-import "./nav.css";
+import "./Nav.css"; // styling
 
-const Nav = ({ installApp }) => {
+export default function Nav({ installApp }) {
   return (
     <div className="top-nav">
-
       <div className="left-box">
         <div className="location-box">
           <i className="fa-solid fa-location-dot"></i>
@@ -18,13 +17,10 @@ const Nav = ({ installApp }) => {
       </div>
 
       <div className="right-box">
-        <div className="install-btn" onClick={installApp}>
+        <button className="install-btn" onClick={installApp}>
           Install
-        </div>
+        </button>
       </div>
-
     </div>
   );
-};
-
-export default Nav;
+}
