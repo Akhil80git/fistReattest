@@ -1,33 +1,5 @@
-// App.jsx
 import React, { useEffect, useState } from 'react';
-
-function Nav({ installApp }) {
-  return (
-    <nav style={{
-      padding: '10px',
-      backgroundColor: '#2a3443',
-      color: 'white',
-      display: 'flex',
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-    }}>
-      <button
-        onClick={installApp}
-        style={{
-          padding: '8px 15px',
-          borderRadius: '5px',
-          cursor: 'pointer',
-          backgroundColor: '#4CAF50',
-          color: 'white',
-          border: 'none',
-          fontSize: '16px',
-        }}
-      >
-        Install App
-      </button>
-    </nav>
-  );
-}
+import Nav from './co/Nav';  // Adjust the path if needed
 
 export default function App() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
@@ -59,11 +31,23 @@ export default function App() {
     });
   }
 
+  function handleLocationClick() {
+    alert('Location clicked!');
+  }
+
+  function handleSearchClick() {
+    alert('Search clicked!');
+  }
+
   return (
     <div>
-      <Nav installApp={handleInstallApp} />
+      <Nav
+        installApp={handleInstallApp}
+        onLocationClick={handleLocationClick}
+        onSearchClick={handleSearchClick}
+      />
       <main>
-        {/* No other page content */}
+        {/* Your page content here */}
       </main>
       <footer style={{ textAlign: 'center', padding: '10px', marginTop: '20px' }}>
         © 2025 Warzone
