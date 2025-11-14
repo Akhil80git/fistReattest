@@ -1,34 +1,23 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./Nav.css";
+import React from 'react';
+import './Nav.css';
 
-const Nav = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
+export default function Nav({ route, onNavigate }) {
   return (
-    <nav className="navbar">
-      <div className="logo">MyLogo</div>
-
-      {/* Navigation Links (React Router Links) */}
-      <ul className={menuOpen ? "nav-links open" : "nav-links"}>
-        <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
-        <li><Link to="/about" onClick={() => setMenuOpen(false)}>About</Link></li>
-        <li><Link to="/services" onClick={() => setMenuOpen(false)}>Services</Link></li>
-        <li><Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link></li>
-      </ul>
-
-      {/* Hamburger Icon */}
-      <div className="menu-icon" onClick={toggleMenu}>
-        <div className={menuOpen ? "bar active bar1" : "bar bar1"}></div>
-        <div className={menuOpen ? "bar active bar2" : "bar bar2"}></div>
-        <div className={menuOpen ? "bar active bar3" : "bar bar3"}></div>
-      </div>
+    <nav className="nav">
+      <a
+        href="/"
+        className={route === '/' ? 'active' : ''}
+        onClick={e => { e.preventDefault(); onNavigate('/'); }}
+      >
+        Home
+      </a>
+      <a
+        href="/about"
+        className={route === '/about' ? 'active' : ''}
+        onClick={e => { e.preventDefault(); onNavigate('/about'); }}
+      >
+        About
+      </a>
     </nav>
   );
-};
-
-export default Nav;
+}

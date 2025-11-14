@@ -1,14 +1,15 @@
-.about-container {
-  padding: 40px;
-  background-color: #f4f4f4;
-  height: 100vh;
+.about {
+  padding: 2rem;
   text-align: center;
+  background: #fff;
 }
 
-.about-container h1 {
-  color: #222;
+.about h2 {
+  font-size: 1.8rem;
+  color: #10b981;
+  margin-bottom: 1rem;
 }
 
-.about-container p {
-  color: #555;
+.about p {
+  color: #334155;
 }

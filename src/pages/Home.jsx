@@ -1,18 +1,11 @@
 import React from 'react';
 import './Home.css';
 
-const Home = () => {
+export default function Home() {
   return (
-    <div className="home-container">
-      {/* 👇 Ye vertical sidebar sirf Home page ke liye */}
-      <div className="sidebar"></div>
-
-      <div className="content">
-        <h1>Welcome to the Home Page</h1>
-        <p>This vertical navbar only appears on Home page.</p>
-      </div>
-    </div>
+    <section className="home">
+      <h1>Welcome to Warzone</h1>
+      <p>India's Best Car Buying & Selling Platform</p>
+    </section>
   );
-};
-
-export default Home;
+}

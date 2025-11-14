@@ -1,102 +1,30 @@
-/* ============ General Navbar ============ */
-.navbar {
-  background-color: #ed2c5c;
-  padding: 8px 40px;
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-/* Logo on the left */
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-/* ============ Desktop View ============ */
-.nav-links {
-  list-style: none;
+.nav {
   display: flex;
-  justify-content: center; /* center links horizontally */
-  align-items: center;
-  gap: 30px;
-  margin: 0;
-  flex: 1;
-  margin-left:300 ;
-}
-
-.nav-links a {
-  text-decoration: none;
+  gap: 1.5rem;
+  background: #182538;
+  padding: 1rem 2rem;
   color: white;
+}
+.nav a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s, border-bottom 0.2s;
   font-weight: 500;
-  transition: 0.3s;
+  padding-bottom: 2px;
 }
-
-.nav-links a:hover {
-  text-shadow: 0 0 10px white;
+.nav a.active,
+.nav a:hover {
+  color: #10b981;
+  border-bottom: 2px solid #10b981;
 }
-
-/* Hamburger icon hidden by default */
-.menu-icon {
-    margin-right: 60px;
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-}
-
-.bar {
-  width: 28px;
-  height: 3px;
-  background-color: white;
-  transition: 0.3s;
-}
-
-/* ============ Mobile View ============ */
-@media (max-width: 768px) {
-  .menu-icon {
-    display: flex;
-  }
-
-  /* Hide nav links initially */
-  .nav-links {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    margin-left: 257px;
-    width: 20%;
-    background-color: #ed2c5c;
+@media (max-width: 600px) {
+  .nav {
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 0;
-    display: none;
+    padding: 1rem 1rem;
+    gap: 0.8rem;
+    align-items: flex-start;
   }
-
-  /* Show nav links when menu open */
-  .nav-links.open {
-    display: flex;
+  .nav a {
+    padding: 0.5rem 0;
   }
-
-  /* Animate bars into X */
-  .bar1.active {
-    transform: rotate(45deg) translate(5px, 6px);
-  }
-  .bar2.active {
-    opacity: 0;
-  }
-  .bar3.active {
-    transform: rotate(-45deg) translate(6px, -6px);
-  }
-}
-
-/* ============ Body Adjustment ============ */
-body {
-  padding-top: 60px; /* to avoid content overlap with fixed navbar */
 }

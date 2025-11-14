@@ -1,13 +1,13 @@
 import React from 'react';
 import './About.css';
 
-const About = () => {
+export default function About() {
   return (
-    <div className="about-container">
-      <h1>About Page</h1>
-      <p>This page does not have a vertical sidebar.</p>
-    </div>
+    <section className="about">
+      <h2>About Warzone</h2>
+      <p>
+        Warzone is India's most trusted platform for buying and selling used cars. We guarantee verified listings and a hassle-free experience!
+      </p>
+    </section>
   );
-};
-
-export default About;
+}
