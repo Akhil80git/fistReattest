@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Nav from './co/Nav';           // Correct: co/ folder mein hai
-import Home from './pages/Home';      // Fixed: pages/ folder se
-import About from './pages/About';    // Fixed: pages/ folder se
+import Nav from './co/Nav';            // Correct: co/ folder mein hai
+// import Home from './pages/Home';   // Removed
+// import About from './pages/About'; // Removed
 
 export default function App() {
   const [route, setRoute] = useState(window.location.pathname);
@@ -54,8 +54,7 @@ export default function App() {
         installApp={handleInstallApp}
       />
       <main>
-        {route === '/' && <Home />}
-        {route === '/about' && <About />}
+        {/* Home and About components removed */}
       </main>
       <footer className="footer">
         © 2025 Warzone
