@@ -1,30 +1,18 @@
-import React from "react";
-import "./nav.css";
+import React from 'react';
+import './Nav.css';
 
-const Nav = ({ installApp }) => {
+export default function Nav({ onNavigate, installApp }) {
   return (
-    <div className="top-nav">
-
-      <div className="left-box">
-        <div className="location-box">
-          <i className="fa-solid fa-location-dot"></i>
-          <span>Bhopal</span>
-        </div>
-
-        <div className="search-box">
-          <i className="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search for items..." />
-        </div>
-      </div>
-
-      <div className="right-box">
-        <div className="install-btn" onClick={installApp}>
-          Install
-        </div>
-      </div>
-
-    </div>
+    <nav className="nav custom-topnav">
+      <button className="icon-btn" onClick={() => onNavigate('/profile')} aria-label="Profile">
+        <i className="fas fa-user-circle"></i>
+      </button>
+      <button className="icon-btn" onClick={() => onNavigate('/settings')} aria-label="Settings">
+        <i className="fas fa-cog"></i>
+      </button>
+      <button className="install-box-btn" onClick={installApp}>
+        Install App
+      </button>
+    </nav>
   );
-};
-
-export default Nav;
+}

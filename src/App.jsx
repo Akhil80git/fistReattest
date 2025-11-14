@@ -1,20 +1,39 @@
-import React from "react";
-import Nav from "./co/Nav";
-
-import usePwa from "./pwa/usePwa";
-
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import Nav from './co/Nav';
 
 export default function App() {
+  const [route, setRoute] = useState('/profile');
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
 
-  const handleInstallApp = usePwa();  // <-- यह जरूरी है
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+    const handler = (e) => { e.preventDefault(); setDeferredPrompt(e); };
+    window.addEventListener('beforeinstallprompt', handler);
+    return () => window.removeEventListener('beforeinstallprompt', handler);
+  }, []);
+
+  function handleNavigate(path) {
+    setRoute(path);
+  }
+
+  function handleInstallApp() {
+    if (!deferredPrompt) {
+      alert('Install prompt not available! Make sure your PWA setup is correct.');
+      return;
+    }
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => setDeferredPrompt(null));
+  }
 
   return (
     <div>
-      <Nav installApp={handleInstallApp} />
-      <main></main>
-      <footer style={{ textAlign: "center", padding: "10px" }}>
-        © 2025 Warzone
-      </footer>
+      <Nav onNavigate={handleNavigate} installApp={handleInstallApp} />
+      <main>
+        <h2>Current: {route === '/profile' ? 'Profile Page' : 'Settings Page'}</h2>
+      </main>
     </div>
   );
 }
