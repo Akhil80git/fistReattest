@@ -15,7 +15,7 @@ export default function App() {
     <div>
       <Nav onNavigate={handleNavigate} installApp={promptInstall} />
       <main>
-        <h2>Current: {route === '/profile' ? 'Profile Page' : 'Settings Page'}</h2>
+        <h2>Current: {route === '/profile' ? 'Profilexxx Page' : 'Settings Page'}</h2>
       </main>
     </div>
   );
