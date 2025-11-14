@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import Nav from './co/Nav';           // Correct: co/ folder mein hai
-import Home from './pages/Home';      // Fixed: pages/ folder se
-import About from './pages/About';    // Fixed: pages/ folder se
+import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Nav from './components/Nav';
+import RoleSelection from './pages/RoleSelection';
 
 export default function App() {
-  const [route, setRoute] = useState(window.location.pathname);
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
   useEffect(() => {
-    const handleRoute = () => setRoute(window.location.pathname);
-    window.addEventListener('popstate', handleRoute);
-
+    // Register service worker for PWA
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(() => {});
+      navigator.serviceWorker.register('/sw.js').catch((err) => {
+        console.warn('Service worker registration failed:', err);
+      });
     }
 
     const beforeInstallPromptHandler = (e) => {
@@ -23,43 +21,28 @@ export default function App() {
     window.addEventListener('beforeinstallprompt', beforeInstallPromptHandler);
 
     return () => {
-      window.removeEventListener('popstate', handleRoute);
       window.removeEventListener('beforeinstallprompt', beforeInstallPromptHandler);
     };
   }, []);
 
-  function handleNavigate(path) {
-    if (path !== route) {
-      window.history.pushState({}, '', path);
-      setRoute(path);
-    }
-  }
-
-  function handleInstallApp() {
+  const handleInstallApp = () => {
     if (!deferredPrompt) {
-      alert('Install prompt not available! Make sure your browser and PWA setup is correct.');
+      alert('Install prompt not available! Make sure your browser supports PWA and you meet install criteria.');
       return;
     }
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then(() => {
       setDeferredPrompt(null);
     });
-  }
+  };
 
   return (
     <div>
-      <Nav
-        route={route}
-        onNavigate={handleNavigate}
-        installApp={handleInstallApp}
-      />
-      <main>
-        {route === '/' && <Home />}
-        {route === '/about' && <About />}
-      </main>
-      <footer className="footer">
-        © 2025 Warzone
-      </footer>
+      <Nav installApp={handleInstallApp} />
+      <Routes>
+        <Route path="/" element={<RoleSelection />} />
+        {/* Future pages */}
+      </Routes>
     </div>
   );
 }
