@@ -1,28 +1,26 @@
 import { useEffect, useState } from "react";
 
-export default function usePWA() {
+export default function usePwa() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
   useEffect(() => {
-    const beforeInstallPromptHandler = (e) => {
+    const handler = (e) => {
       e.preventDefault();
       setDeferredPrompt(e);
     };
 
-    window.addEventListener("beforeinstallprompt", beforeInstallPromptHandler);
+    window.addEventListener("beforeinstallprompt", handler);
 
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("/sw.js").catch(() => {});
     }
 
-    return () => {
-      window.removeEventListener("beforeinstallprompt", beforeInstallPromptHandler);
-    };
+    return () => window.removeEventListener("beforeinstallprompt", handler);
   }, []);
 
-  const installApp = () => {
+  function installApp() {
     if (!deferredPrompt) {
-      alert("Install prompt not available!");
+      alert("Install prompt not ready!");
       return;
     }
 
@@ -30,7 +28,7 @@ export default function usePWA() {
     deferredPrompt.userChoice.then(() => {
       setDeferredPrompt(null);
     });
-  };
+  }
 
-  return { installApp };
+  return installApp;
 }
