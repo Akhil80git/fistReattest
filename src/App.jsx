@@ -1,39 +1,52 @@
+// App.jsx
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import Nav from './co/Nav';            // Correct: co/ folder mein hai
-// import Home from './pages/Home';   // Removed
-// import About from './pages/About'; // Removed
+
+function Nav({ installApp }) {
+  return (
+    <nav style={{
+      padding: '10px',
+      backgroundColor: '#2a3443',
+      color: 'white',
+      display: 'flex',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+    }}>
+      <button
+        onClick={installApp}
+        style={{
+          padding: '8px 15px',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          backgroundColor: '#4CAF50',
+          color: 'white',
+          border: 'none',
+          fontSize: '16px',
+        }}
+      >
+        Install App
+      </button>
+    </nav>
+  );
+}
 
 export default function App() {
-  const [route, setRoute] = useState(window.location.pathname);
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
   useEffect(() => {
-    const handleRoute = () => setRoute(window.location.pathname);
-    window.addEventListener('popstate', handleRoute);
-
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(() => {});
-    }
-
     const beforeInstallPromptHandler = (e) => {
       e.preventDefault();
       setDeferredPrompt(e);
     };
     window.addEventListener('beforeinstallprompt', beforeInstallPromptHandler);
 
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+
     return () => {
-      window.removeEventListener('popstate', handleRoute);
       window.removeEventListener('beforeinstallprompt', beforeInstallPromptHandler);
     };
   }, []);
-
-  function handleNavigate(path) {
-    if (path !== route) {
-      window.history.pushState({}, '', path);
-      setRoute(path);
-    }
-  }
 
   function handleInstallApp() {
     if (!deferredPrompt) {
@@ -48,15 +61,11 @@ export default function App() {
 
   return (
     <div>
-      <Nav
-        route={route}
-        onNavigate={handleNavigate}
-        installApp={handleInstallApp}
-      />
+      <Nav installApp={handleInstallApp} />
       <main>
-        {/* Home and About components removed */}
+        {/* No other page content */}
       </main>
-      <footer className="footer">
+      <footer style={{ textAlign: 'center', padding: '10px', marginTop: '20px' }}>
         © 2025 Warzone
       </footer>
     </div>
