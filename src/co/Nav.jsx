@@ -22,14 +22,14 @@ export default function Nav({ route, onNavigate, installApp }) {
         <a
           href="/"
           className={route === '/' ? 'active' : ''}
-          onClick={e => { e.preventDefault(); handleClick('/'); }}
+          onClick={(e) => { e.preventDefault(); handleClick('/'); }}
         >
           Home
         </a>
         <a
           href="/about"
           className={route === '/about' ? 'active' : ''}
-          onClick={e => { e.preventDefault(); handleClick('/about'); }}
+          onClick={(e) => { e.preventDefault(); handleClick('/about'); }}
         >
           About
         </a>
