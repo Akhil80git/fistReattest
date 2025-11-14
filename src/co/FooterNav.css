@@ -1,0 +1,23 @@
+.footer-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #182538;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.7rem 0;
+  box-shadow: 0 -2px 12px rgba(40,40,40,0.13);
+}
+.footer-nav a {
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.footer-nav a:hover {
+  background: #10b98120;
+  color: #10b981;
+}

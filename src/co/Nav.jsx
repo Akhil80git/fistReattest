@@ -1,25 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Nav.css';
 
-export default function Nav({ route, onNavigate, installApp }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  function handleClick(path) {
-    onNavigate(path);
-    setMenuOpen(false);
-  }
-
+export default function Nav({ onNavigate }) {
   return (
     <nav className="nav">
-      <button className="mobile-menu-btn" onClick={() => setMenuOpen(v => !v)} aria-label="Menu">
-        <i className="fas fa-bars"></i>
-      </button>
-      <div className={`nav-links${menuOpen ? ' show' : ''}`}>
-        <a href="/" className={route === '/' ? 'active' : ''} onClick={e => { e.preventDefault(); handleClick('/'); }}>Home</a>
-        <a href="/about" className={route === '/about' ? 'active' : ''} onClick={e => { e.preventDefault(); handleClick('/about'); }}>About</a>
-        {/* INSTALL APP BUTTON ALWAYS VISIBLE */}
-        <button className="install-btn-nav" onClick={installApp}>Install App</button>
-      </div>
+      <a onClick={() => onNavigate('/home')}><i className="fas fa-home"></i> Home</a>
+      <a onClick={() => onNavigate('/search')}><i className="fas fa-search"></i> Search</a>
+      <a onClick={() => onNavigate('/notifications')}><i className="fas fa-bell"></i> Notifications</a>
+      <a onClick={() => onNavigate('/profile')}><i className="fas fa-user"></i> Profile</a>
     </nav>
   );
 }
