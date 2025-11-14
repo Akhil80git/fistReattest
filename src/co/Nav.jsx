@@ -1,42 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Nav.css';
 
-export default function Nav({ route, onNavigate, installApp }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  function handleClick(path) {
-    onNavigate(path);
-    setMenuOpen(false);
-  }
-
+export default function Nav({ installApp }) {
   return (
-    <nav className={`nav${menuOpen ? ' active' : ''}`}>
+    <nav className="top-nav" style={{
+      padding: '10px',
+      backgroundColor: '#2a3443',
+      color: 'white',
+      display: 'flex',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+    }}>
       <button
-        className="mobile-menu-btn"
-        onClick={() => setMenuOpen((v) => !v)}
-        aria-label="Menu"
+        onClick={installApp}
+        style={{
+          padding: '8px 15px',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          backgroundColor: '#4CAF50',
+          color: 'white',
+          border: 'none',
+          fontSize: '16px',
+        }}
       >
-        <i className="fas fa-bars"></i>
+        Install App
       </button>
-      <div className={`nav-links${menuOpen ? ' show' : ''}`}>
-        <a
-          href="/"
-          className={route === '/' ? 'active' : ''}
-          onClick={(e) => { e.preventDefault(); handleClick('/'); }}
-        >
-          Home
-        </a>
-        <a
-          href="/about"
-          className={route === '/about' ? 'active' : ''}
-          onClick={(e) => { e.preventDefault(); handleClick('/about'); }}
-        >
-          About
-        </a>
-        <button className="install-btn-nav" onClick={installApp}>
-          Install App
-        </button>
-      </div>
     </nav>
   );
 }
