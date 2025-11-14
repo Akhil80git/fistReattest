@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Nav from './co/Nav';  // Adjust the path if needed
+import Nav from './co/Nav'; // adjust path as needed
 
 export default function App() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
@@ -31,23 +31,11 @@ export default function App() {
     });
   }
 
-  function handleLocationClick() {
-    alert('Location clicked!');
-  }
-
-  function handleSearchClick() {
-    alert('Search clicked!');
-  }
-
   return (
     <div>
-      <Nav
-        installApp={handleInstallApp}
-        onLocationClick={handleLocationClick}
-        onSearchClick={handleSearchClick}
-      />
+      <Nav installApp={handleInstallApp} />
       <main>
-        {/* Your page content here */}
+        {/* Your app content here */}
       </main>
       <footer style={{ textAlign: 'center', padding: '10px', marginTop: '20px' }}>
         © 2025 Warzone
