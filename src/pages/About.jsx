@@ -6,7 +6,7 @@ export default function About() {
     <section className="about">
       <h2>About Warzone</h2>
       <p>
-        Warzone is India's trusted platform for buying and selling used cars.
+        this is the end for the men 
       </p>
     </section>
   );
