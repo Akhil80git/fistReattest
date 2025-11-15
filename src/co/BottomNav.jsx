@@ -1,5 +1,5 @@
 import React from "react";
-import "./nav.css";
+import "./Nav.css";
 
 function BottomNav({ activeTab = "Offer", onTabChange = () => {} }) {
   const tabs = [
@@ -10,7 +10,7 @@ function BottomNav({ activeTab = "Offer", onTabChange = () => {} }) {
     { key: "Profile", icon: "👤", label: "Profile" }
   ];
   return (
-    <nav className="bottomnav">
+    <nav className="BottomNav">
       {tabs.map(tab => (
         <div
           className={`nav-item${activeTab === tab.key ? " active" : ""}`}
