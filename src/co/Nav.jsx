@@ -1,7 +1,7 @@
 import React from "react";
 import "./Nav.css";
 
-function Nav({ installApp }) {
+function Nav({ installApp, isInstalled }) {
   return (
     <nav className="topnav">
       <div className="nav-location">
@@ -12,9 +12,15 @@ function Nav({ installApp }) {
         <span className="nav-search-icon">&#128269;</span>
         <input className="nav-search-input" type="text" placeholder="Search for items..." />
       </div>
-      <button className="nav-install-btn" onClick={installApp}>
-        Install
-      </button>
+
+      {/* Conditionally show Install button on website, Login label on app */}
+      {!isInstalled ? (
+        <button className="nav-install-btn" onClick={installApp}>
+          Install
+        </button>
+      ) : (
+        <div className="nav-login-text">Login</div>
+      )}
     </nav>
   );
 }
