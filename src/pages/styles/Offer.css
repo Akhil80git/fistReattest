@@ -1,4 +1,47 @@
 .offer-page {
-  padding: 16px;
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 80px 60px;
   color: #e94277;
+  font-size: 2.8rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffe6f0;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(233, 66, 119, 0.45);
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.offer-page h1 {
+  font-size: 4.5rem;
+  margin-bottom: 50px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.offer-page p {
+  font-size: 2.8rem;
+  line-height: 1.4;
+  margin-bottom: 60px;
+  font-weight: 700;
+}
+
+.offer-list {
+  list-style-type: disc;
+  padding-left: 3rem;
+  text-align: left;
+  font-size: 2.4rem;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #cc2a66;
+  font-weight: 700;
+}
+
+.offer-list li {
+  margin-bottom: 30px;
+  line-height: 1.6;
 }
