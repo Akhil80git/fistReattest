@@ -25,7 +25,52 @@
 }
 .nav-search-icon { font-size: 16px; color: #888; margin-right: 4px; }
 .nav-search-input { border: none; outline: none; background: transparent; padding: 6px 0; font-size: 15px; width: 130px; }
-.nav-install-btn { background: #000; color: #fff; border: none; padding: 5px 14px; border-radius: 16px; font-size: 14px; font-weight: 600; cursor: pointer; }
+
+/* Install button */
+.nav-install-btn {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 5px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.nav-install-btn:hover {
+  background-color: #444;
+}
+
+/* Login text with blinking highlight until logged in */
+.nav-login-text {
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  animation: blinkHighlight 1.5s infinite;
+  color: #e94277;
+}
+@keyframes blinkHighlight {
+  0%, 100% { color: #e94277; text-shadow: 0 0 5px #e94277; }
+  50% { color: #fff; text-shadow: none; }
+}
+
+/* Profile circle with user initials */
+.nav-profile-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #e94277;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
 
 /* Bottom nav styles */
 .BottomNav {
@@ -39,7 +84,60 @@
   padding: 4px 0;
   z-index: 10;
 }
-.nav-item { display: flex; flex-direction: column; align-items: center; flex: 1 1 0; font-size: 14px; padding: 2px 0; color: #555; }
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+  font-size: 14px;
+  padding: 2px 0;
+  color: #555;
+  cursor: pointer;
+}
 .nav-item.active { color: #e94277; }
 .nav-icon { font-size: 21px; }
 .nav-label { font-size: 12px; margin-top: 1px; }
+
+/* Popup modal styles */
+.popup-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+.popup-modal {
+  background: white;
+  padding: 20px 28px;
+  border-radius: 12px;
+  max-width: 320px;
+  width: 90%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  position: relative;
+}
+/* Close (cross) icon in popup */
+.popup-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.2s ease;
+}
+.popup-close-btn:hover {
+  color: #e94277;
+}
+
+/* Input field in popup */
+.nav-login-input {
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  outline: none;
+}
