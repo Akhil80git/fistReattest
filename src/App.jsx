@@ -5,7 +5,7 @@ import usePwa from './pwa/usePwa';
 
 export default function App() {
   const [route, setRoute] = useState('/profile');
-  const { deferredPrompt, promptInstall } = usePWA();
+  const { deferredPrompt, promptInstall } = usePwa();
 
   function handleNavigate(path) {
     setRoute(path);
