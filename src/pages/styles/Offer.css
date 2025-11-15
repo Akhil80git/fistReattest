@@ -1,47 +1,280 @@
+/* Base Styles - Mobile First Approach */
 .offer-page {
-  max-width: 1100px;
-  margin: 80px auto;
-  padding: 80px 60px;
-  color: #e94277;
-  font-size: 2.8rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #ffe6f0;
-  border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(233, 66, 119, 0.45);
-  text-align: center;
   min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.offer-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.offer-title {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.offer-subtitle {
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Offer Grid */
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.offer-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 250px;
 }
 
-.offer-page h1 {
-  font-size: 4.5rem;
-  margin-bottom: 50px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 3px;
+.offer-card-highlight {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border: 2px solid #ffc107;
+  transform: scale(1.02);
 }
 
-.offer-page p {
-  font-size: 2.8rem;
+.offer-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+.offer-card-highlight:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.offer-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.offer-card-title {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.offer-card-desc {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1.5rem;
   line-height: 1.4;
-  margin-bottom: 60px;
-  font-weight: 700;
 }
 
-.offer-list {
-  list-style-type: disc;
-  padding-left: 3rem;
-  text-align: left;
-  font-size: 2.4rem;
-  max-width: 700px;
+.offer-cta-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  width: 100%;
+  max-width: 150px;
+}
+
+.offer-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.offer-cta-btn:active {
+  transform: translateY(0);
+}
+
+/* Banner */
+.offer-banner {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 800px;
   margin: 0 auto;
-  color: #cc2a66;
+}
+
+.banner-content h2 {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  color: white;
+  margin-bottom: 1rem;
   font-weight: 700;
 }
 
-.offer-list li {
-  margin-bottom: 30px;
-  line-height: 1.6;
+.banner-content p {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+}
+
+.countdown-timer {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  display: inline-block;
+  font-weight: 600;
+  color: white;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .offer-page {
+    padding: 2rem;
+  }
+  
+  .offer-header {
+    margin-bottom: 3rem;
+  }
+  
+  .offer-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .offer-card {
+    padding: 2rem;
+    min-height: 280px;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  .offer-page {
+    padding: 3rem;
+  }
+  
+  .offer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  
+  .offer-card {
+    min-height: 300px;
+  }
+}
+
+/* Large Desktop Styles */
+@media (min-width: 1440px) {
+  .offer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* PWA Specific Styles */
+@media (display-mode: standalone) {
+  .offer-page {
+    padding-top: calc(1rem + env(safe-area-inset-top));
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+    padding-left: calc(1rem + env(safe-area-inset-left));
+    padding-right: calc(1rem + env(safe-area-inset-right));
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .offer-card:hover {
+    transform: none;
+  }
+  
+  .offer-cta-btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .offer-cta-btn:active {
+    transform: scale(0.98);
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .offer-card {
+    background: white;
+    border: 2px solid black;
+  }
+  
+  .offer-card-highlight {
+    background: yellow;
+    border: 3px solid black;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .offer-card,
+  .offer-cta-btn {
+    transition: none;
+  }
+  
+  .offer-card:hover,
+  .offer-cta-btn:hover {
+    transform: none;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .offer-card:not(.offer-card-highlight) {
+    background: rgba(30, 30, 30, 0.95);
+    color: white;
+  }
+  
+  .offer-card-title:not(.offer-card-highlight .offer-card-title) {
+    color: white;
+  }
+  
+  .offer-card-desc:not(.offer-card-highlight .offer-card-desc) {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .offer-page {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .offer-card {
+    background: white !important;
+    border: 1px solid black !important;
+    box-shadow: none !important;
+  }
+  
+  .offer-cta-btn {
+    display: none;
+  }
 }
