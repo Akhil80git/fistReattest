@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import "./Login.css";
 
-function Login({ onLogin, onClose }) {
-  const [name, setName] = useState("");
+function Login({ onClose, onLoginSuccess }) {
+  const [activeTab, setActiveTab] = useState("login");
+  const [loginName, setLoginName] = useState("");
+  const [registerName, setRegisterName] = useState("");
 
-  const handleSubmit = () => {
-    if (name.trim()) {
-      onLogin(name.trim());
+  const handleLogin = () => {
+    if (loginName.trim()) {
+      onLoginSuccess(loginName.trim());
+    }
+  };
+
+  const handleRegister = () => {
+    if (registerName.trim()) {
+      // For demo, register works same as login logic
+      onLoginSuccess(registerName.trim());
     }
   };
 
@@ -14,25 +23,58 @@ function Login({ onLogin, onClose }) {
     <div className="popup-modal-overlay">
       <div className="popup-modal">
         <button className="popup-close-btn" onClick={onClose}>&times;</button>
-        <h3 style={{ marginTop: 0 }}>Login Required</h3>
-        <input
-          type="text"
-          className="nav-login-input"
-          placeholder="Enter your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <button
-          className="nav-install-btn"
-          style={{ width: "100%", background: "#e94277", margin: "2px 0" }}
-          onClick={handleSubmit}
-          disabled={!name.trim()}
-        >
-          Login
-        </button>
-        <div style={{ fontSize: 12, marginTop: 8, color: "#888" }}>
-          You can close this popup using the cross icon.
+        <div className="login-tabs">
+          <button
+            className={activeTab === "login" ? "active-tab" : ""}
+            onClick={() => setActiveTab("login")}
+          >
+            Login
+          </button>
+          <button
+            className={activeTab === "register" ? "active-tab" : ""}
+            onClick={() => setActiveTab("register")}
+          >
+            Register
+          </button>
         </div>
+
+        {activeTab === "login" && (
+          <div className="login-form">
+            <input
+              type="text"
+              placeholder="Enter your username"
+              value={loginName}
+              onChange={(e) => setLoginName(e.target.value)}
+              className="nav-login-input"
+            />
+            <button
+              className="nav-install-btn"
+              disabled={!loginName.trim()}
+              onClick={handleLogin}
+            >
+              Login
+            </button>
+          </div>
+        )}
+
+        {activeTab === "register" && (
+          <div className="login-form">
+            <input
+              type="text"
+              placeholder="Choose a username"
+              value={registerName}
+              onChange={(e) => setRegisterName(e.target.value)}
+              className="nav-login-input"
+            />
+            <button
+              className="nav-install-btn"
+              disabled={!registerName.trim()}
+              onClick={handleRegister}
+            >
+              Register
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
