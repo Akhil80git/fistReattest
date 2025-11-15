@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Nav from "./co/Nav";
 import BottomNav from "./co/BottomNav";
+import Login from "./pages/Login";
 import "./co/Nav.css";
 import usePwa from "./pwa/usePwa";
 
@@ -8,20 +9,21 @@ function App() {
   const [tab, setTab] = useState("Offer");
   const { promptInstall, isInstalled } = usePwa();
 
-  // New states for login popup and user login
+  // Login popup state and user info
   const [showLoginPopup, setShowLoginPopup] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
 
-  // Show popup only if in app, not logged in, and not closed by user
   const shouldShowPopup = isInstalled && !isLoggedIn && showLoginPopup;
 
-  // When login is complete
+  // Handle login success
   const handleLogin = (name) => {
     setIsLoggedIn(true);
     setShowLoginPopup(false);
     setUserName(name);
   };
+
+  // Handle closing popup without login
   const handleClosePopup = () => setShowLoginPopup(false);
 
   return (
@@ -33,35 +35,10 @@ function App() {
         userName={userName}
       />
       <div style={{ minHeight: "calc(100vh - 48px - 48px)" }}>
-        {/* Main page content here */}
         {shouldShowPopup && (
-          <div className="popup-modal-overlay">
-            <div className="popup-modal">
-              <button className="popup-close-btn" onClick={handleClosePopup}>
-                &times;
-              </button>
-              <h3 style={{ marginTop: 0 }}>Login Required</h3>
-              <input
-                type="text"
-                className="nav-login-input"
-                placeholder="Enter your name"
-                style={{ padding: "8px", marginBottom: "10px", width: "100%" }}
-                onChange={e => setUserName(e.target.value)}
-              />
-              <button
-                className="nav-install-btn"
-                style={{ width: "100%", background: "#e94277", margin: "2px 0" }}
-                onClick={() => handleLogin(userName)}
-                disabled={!userName.trim()}
-              >
-                Login
-              </button>
-              <div style={{fontSize:12, marginTop:8, color:"#888"}}>
-                You can close this popup using the cross icon.
-              </div>
-            </div>
-          </div>
+          <Login onLogin={handleLogin} onClose={handleClosePopup} />
         )}
+        {/* Your page content here */}
       </div>
       <BottomNav activeTab={tab} onTabChange={setTab} />
     </div>
