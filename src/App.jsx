@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Nav from "./co/nav";
-import BottomNav from "./co/bottomnav";
-import "./co/nav.css";
+import Nav from "./co/Nav";
+import BottomNav from "./co/BottomNav";
+import "./co/Nav.css";
 
 function App() {
   const [tab, setTab] = useState("Offer");
