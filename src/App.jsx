@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
-import './App.css';
-import Nav from './co/Nav';
-import usePwa from './pwa/usePwa';
+import React, { useState } from "react";
+import Nav from "./co/nav";
+import BottomNav from "./co/bottomnav";
+import "./co/nav.css";
 
-export default function App() {
-  const [route, setRoute] = useState('/profile');
-  const { deferredPrompt, promptInstall } = usePwa();
-
-  function handleNavigate(path) {
-    setRoute(path);
-  }
-
+function App() {
+  const [tab, setTab] = useState("Offer");
   return (
-    <div>
-      <Nav onNavigate={handleNavigate} installApp={promptInstall} />
-      <main>
-        <h2>Current: {route === '/profile' ? 'Profilexxx Page' : 'Settingsgytsiiooo Page'}</h2>
-      </main>
+    <div className="app-wrapper" style={{ background: "#fafafa", minHeight: "100vh" }}>
+      <Nav />
+      <div style={{ minHeight: 'calc(100vh - 48px - 48px)' }}>
+        {/* Page content yahan aayega... */}
+      </div>
+      <BottomNav activeTab={tab} onTabChange={setTab} />
     </div>
   );
 }
+
+export default App;
