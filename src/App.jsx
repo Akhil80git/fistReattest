@@ -9,7 +9,6 @@ function App() {
   const [tab, setTab] = useState("Offer");
   const { promptInstall, isInstalled } = usePwa();
 
-  // Login modal control & user info
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
@@ -31,3 +30,16 @@ function App() {
       />
       <div style={{minHeight: "calc(100vh - 48px - 48px)"}}>
         {isModalOpen && (
+          <Login
+            onClose={() => setIsModalOpen(false)}
+            onLoginSuccess={handleLoginSuccess}
+          />
+        )}
+        {/* Page content */}
+      </div>
+      <BottomNav activeTab={tab} onTabChange={setTab} />
+    </div>
+  );
+}
+
+export default App;
