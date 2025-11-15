@@ -9,40 +9,25 @@ function App() {
   const [tab, setTab] = useState("Offer");
   const { promptInstall, isInstalled } = usePwa();
 
-  // Login popup state and user info
-  const [showLoginPopup, setShowLoginPopup] = useState(true);
+  // Login modal control & user info
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
 
-  const shouldShowPopup = isInstalled && !isLoggedIn && showLoginPopup;
-
-  // Handle login success
-  const handleLogin = (name) => {
+  const handleLoginSuccess = (name) => {
     setIsLoggedIn(true);
-    setShowLoginPopup(false);
     setUserName(name);
+    setIsModalOpen(false);
   };
 
-  // Handle closing popup without login
-  const handleClosePopup = () => setShowLoginPopup(false);
-
   return (
-    <div className="app-wrapper" style={{ background: "#fafafa", minHeight: "100vh" }}>
+    <div className="app-wrapper" style={{background: "#fafafa", minHeight: "100vh"}}>
       <Nav
         installApp={promptInstall}
         isInstalled={isInstalled}
         isLoggedIn={isLoggedIn}
         userName={userName}
+        openLoginModal={() => setIsModalOpen(true)}
       />
-      <div style={{ minHeight: "calc(100vh - 48px - 48px)" }}>
-        {shouldShowPopup && (
-          <Login onLogin={handleLogin} onClose={handleClosePopup} />
-        )}
-        {/* Your page content here */}
-      </div>
-      <BottomNav activeTab={tab} onTabChange={setTab} />
-    </div>
-  );
-}
-
-export default App;
+      <div style={{minHeight: "calc(100vh - 48px - 48px)"}}>
+        {isModalOpen && (
