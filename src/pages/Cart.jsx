@@ -5,7 +5,7 @@ function Cart() {
   return (
     <div className="cart-page">
       <h1>Cart Page</h1>
-      <p>Yahan user ka cart dikhega.</p>
+      <p>Yahan us44444444444499999er ka cart dikhega.</p>
     </div>
   );
 }
