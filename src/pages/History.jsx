@@ -5,7 +5,7 @@ function History() {
   return (
     <div className="history-page">
       <h1>History Page</h1>
-      <p>Aapki order history yahan dikhegi.</p>
+      <p>Aapki 00000000000000000000000000000000order history yahan dikhegi.</p>
     </div>
   );
 }
